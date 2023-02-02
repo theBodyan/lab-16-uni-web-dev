@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -24,12 +26,21 @@ class Post extends CrudModel
 
     public function getCreateValidationRules(): array
     {
-        return [];
+        return [
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'topic_id' => 'required|integer',
+            'icon_id' => 'integer'
+        ];
     }
 
     public function getUpdateValidationRules(): array
     {
-        return [];
+        return [
+            'title' => 'required_without:body,icon_id|string',
+            'body' => 'required_without:title,icon_id|string',
+            'icon_id' => 'required_without:title,body|integer'
+        ];
     }
 
     public function topic(): BelongsTo
@@ -40,5 +51,10 @@ class Post extends CrudModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(File::class);
     }
 }

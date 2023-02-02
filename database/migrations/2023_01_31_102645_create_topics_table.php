@@ -15,7 +15,8 @@ return new class () extends Migration {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreign('forum_id');
+            $table->foreignId('forum_id');
+            $table->foreignId('icon_id')->nullable();
             $table->timestamps();
         });
     }

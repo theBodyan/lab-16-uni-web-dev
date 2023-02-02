@@ -23,7 +23,9 @@ class File extends CrudModel
 
     public function getCreateValidationRules(): array
     {
-        return [];
+        return [
+            'file' => 'required|mimes:jpg,bmp,png,svg'
+        ];
     }
 
     public function getUpdateValidationRules(): array

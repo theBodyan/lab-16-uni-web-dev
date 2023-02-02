@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->foreign('topic_id');
+            $table->foreignId('topic_id');
             $table->timestamps();
         });
     }

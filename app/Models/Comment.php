@@ -23,12 +23,18 @@ class Comment extends CrudModel
 
     public function getCreateValidationRules(): array
     {
-        return [];
+        return [
+            'body' => 'required|string',
+            'post_id' => 'required|integer',
+            'user_id' => 'required|integer'
+        ];
     }
 
     public function getUpdateValidationRules(): array
     {
-        return [];
+        return [
+            'body' => 'required|string',
+        ];
     }
 
     public function user(): BelongsTo

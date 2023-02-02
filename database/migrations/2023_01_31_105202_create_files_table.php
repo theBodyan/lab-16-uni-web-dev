@@ -15,7 +15,8 @@ return new class () extends Migration {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('storage_path');
-            $table->foreign('user_id');
+            $table->foreignId('user_id');
+            $table->foreignId('post_id')->nullable();
             $table->timestamps();
         });
     }
