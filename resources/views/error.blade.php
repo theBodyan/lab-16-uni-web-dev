@@ -62,7 +62,21 @@
 </body>
 <script>
     function weDontHaveSupport() {
-        alert('We don\' have support! Go back to the main page');
+        let alertBox = document.createElement("div");
+        alertBox.style.backgroundColor = "#50E3C2";
+        alertBox.style.color = "#2C2C2C";
+        alertBox.style.padding = "20px";
+        alertBox.style.position = "fixed";
+        alertBox.style.top = "50%";
+        alertBox.style.left = "50%";
+        alertBox.style.transform = "translate(-50%, -50%)";
+        alertBox.style.borderRadius = "10px";
+        alertBox.style.boxShadow = "0px 0px 10px #2C2C2C";
+        alertBox.innerHTML = "<p>We do not have support!</p>";
+        document.body.appendChild(alertBox);
+        setTimeout(function(){
+            alertBox.style.display = "none";
+        }, 2000);
     }
 </script>
 </html>
