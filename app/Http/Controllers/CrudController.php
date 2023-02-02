@@ -34,6 +34,9 @@ abstract class CrudController extends Controller
 
     public function create(): JsonResponse
     {
+        if ($this->model->createValidationFails()) {
+            return response()->json(['errors' => $this->model->getValidationErrors()]);
+        }
         return response()->json([$this->getModelName() => $this->model->create()], 201);
     }
 
@@ -44,6 +47,9 @@ abstract class CrudController extends Controller
 
     public function update(): JsonResponse
     {
+        if ($this->model->updateValidationFails()) {
+            return response()->json(['errors' => $this->model->getValidationErrors()]);
+        }
         return response()->json([$this->getModelName() => $this->model->put()]);
     }
 

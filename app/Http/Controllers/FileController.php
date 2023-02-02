@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CrudModel;
 use App\Models\File;
+use Illuminate\Http\JsonResponse;
 
 class FileController extends CrudController
 {

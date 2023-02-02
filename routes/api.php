@@ -43,5 +43,4 @@ Route::delete('/topic/{id}', [TopicController::class, 'delete']);
 Route::get('/files', [FileController::class, 'getAll']);
 Route::post('/file', [FileController::class, 'create']);
 Route::get('/file/{id}', [FileController::class, 'get']);
-Route::put('/file/{id}', [FileController::class, 'update']);
 Route::delete('/file/{id}', [FileController::class, 'delete']);
